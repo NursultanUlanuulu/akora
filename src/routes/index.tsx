@@ -561,7 +561,7 @@ function ContactForm() {
 
             <div className="mt-10 space-y-5 text-sm">
               <ContactRow label="Email" value="acoraeducation@gmail.com" href="mailto:acoraeducation@gmail.com" />
-              <ContactRow label="WhatsApp" value="+996 222 060 036" href="https://wa.me/996222060036" />
+              <ContactRow label="WhatsApp" value="+996 550 878 512" href="https://wa.me/996550878512" />
               <ContactRow label="Режим" value="Пн–Пт, 09:00 – 18:00" />
             </div>
           </Reveal>
@@ -773,8 +773,8 @@ function Contacts() {
                   с. Джаны-Джер, ул. Бухобаева Молдоказы, д. 13
                 </InfoBlock>
                 <InfoBlock label="Телефон / WhatsApp">
-                  <a href="tel:+996222060036" className="hover:text-gold transition-colors">
-                    +996 222 060 036
+                  <a href="tel:+996550878512" className="hover:text-gold transition-colors">
+                    +996 550 878 512
                   </a>
                 </InfoBlock>
                 <InfoBlock label="Email">
