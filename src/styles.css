@@ -1,0 +1,216 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", "Inter", ui-sans-serif, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-deep: var(--primary-deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(0.985 0.003 260);   /* #F8F9FC */
+  --foreground: oklch(0.18 0.005 260);    /* #1A1A1A */
+  --surface: oklch(1 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.005 260);
+
+  --primary: oklch(0.28 0.11 265);        /* deep navy #0B2A6F */
+  --primary-foreground: oklch(0.98 0.005 260);
+  --primary-deep: oklch(0.22 0.10 265);   /* deeper navy */
+
+  --gold: oklch(0.72 0.12 78);            /* #C89B3C */
+  --gold-soft: oklch(0.82 0.10 82);
+
+  --muted: oklch(0.955 0.005 260);
+  --muted-foreground: oklch(0.50 0.02 260); /* #5B6475 */
+
+  --border: oklch(0.90 0.008 260);
+  --input: oklch(0.94 0.006 260);
+  --ring: oklch(0.72 0.12 78 / 0.5);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--color-primary);
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-primary);
+  }
+}
+
+@utility container-x {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+
+  &::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: var(--color-gold);
+    display: inline-block;
+  }
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.6rem;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  border-radius: 0.125rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background: var(--color-primary-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 32px -12px color-mix(in oklab, var(--color-primary) 55%, transparent);
+  }
+}
+
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.6rem;
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  border-radius: 0.125rem;
+  border: 1px solid color-mix(in oklab, var(--color-primary) 20%, transparent);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    border-color: var(--color-primary);
+    background: color-mix(in oklab, var(--color-primary) 4%, transparent);
+  }
+}
+
+@utility btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.6rem;
+  background: var(--color-gold);
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  border-radius: 0.125rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background: var(--color-gold-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 32px -12px color-mix(in oklab, var(--color-gold) 60%, transparent);
+  }
+}
+
+@utility card-premium {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--color-gold) 40%, transparent);
+    box-shadow: 0 24px 48px -24px color-mix(in oklab, var(--color-primary) 25%, transparent);
+  }
+}
+
+@utility hairline {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklab, var(--color-gold) 60%, transparent),
+    transparent
+  );
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility animate-fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
